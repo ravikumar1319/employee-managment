@@ -1,13 +1,11 @@
 {
-  "name": "Employee Management System",
-  "short_name": "EmpMgmt",
-  "description": "A platform to manage employee data and track performance.",
-  "start_url": "/",
+  "name": "empoylee-management-new",
+  "short_name": "empoylee-management-new",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "orientation": "portrait",
-  "scope": "/",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
