@@ -6,22 +6,22 @@
   <table class="min-w-full bg-white rounded-lg shadow-md">
     <thead class="bg-gray-800">
       <tr>
-        <th class="py-3 px-6 text-left text-gray-200">ID</th>
         <th class="py-3 px-6 text-left text-gray-200">Name</th>
         <th class="py-3 px-6 text-left text-gray-200">Department</th>
         <th class="py-3 px-6 text-left text-gray-200">Actions</th>
       </tr>
     </thead>
     <tbody>
+      @for (emp of employee$ | async; track emp.id) {
       <tr class="border-t">
-        <td class="py-2 px-4">1</td>
-        <td class="py-2 px-4">Ravi Kumar</td>
-        <td class="py-2 px-4">IT</td>
+        <td class="py-2 px-4">{{emp.name}}</td>
+        <td class="py-2 px-4">{{emp.department}}</td>
         <td class="py-2 px-4">
           <a routerLink="/edit/1" class="text-blue-500 hover:underline mr-2">Edit</a>
           <button class="text-red-500 hover:underline">Delete</button>
         </td>
       </tr>
+    }
     </tbody>
   </table>
 </div>

@@ -14,10 +14,11 @@
 
 <!-- Mobile Menu (Slide-in) -->
 @if(menuOpen){
-<div class="md:hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 z-50">
-    <div class="bg-white p-4 flex flex-col items-center">
-        <a routerLink="/" class="text-blue-500 py-2 hover:underline">Home</a>
-        <a routerLink="/add" class="text-blue-500 py-2 hover:underline">Add Employee</a>
+<div class="md:hidden fixed inset-0 bg-gray-800 bg-opacity-50 z-50" (click)="closeMenu()">
+    <div class="bg-gray-800 p-4 flex flex-col items-center w-3/4 sm:w-1/2 absolute right-0 top-[50px] h-auto"
+        (click)="$event.stopPropagation()">
+        <a [routerLink]="['/']" class="text-white py-2 hover:underline" (click)="closeMenu()">Home</a>
+        <a [routerLink]="['/add']" class="text-white py-2 hover:underline" (click)="closeMenu()">Add Employee</a>
     </div>
 </div>
 }

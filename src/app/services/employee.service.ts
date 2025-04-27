@@ -18,8 +18,12 @@ export class EmployeeService {
     { id: 2, name: 'Jane Smith', department: 'IT' }
   ];
 
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(API_ENDPOINT+'/api/employee');
+  // getEmployees(): Observable<Employee[]> {
+  //   return this.http.get<Employee[]>(API_ENDPOINT+'/employee');
+  // }
+
+  getEmployees() {
+    return this.http.get("http://localhost:3000/employee")
   }
 
   addEmployee(employee: Employee) {
