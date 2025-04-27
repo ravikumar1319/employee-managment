@@ -1,0 +1,16 @@
+{
+    "api":{
+        "employee": [
+            {
+                "id": 1,
+                "name": "John Doe",
+                "department": "HR"
+            },
+            {
+                "id": 2,
+                "name": "Jane Smith",
+                "department": "IT"
+            }
+        ]
+    }
+}

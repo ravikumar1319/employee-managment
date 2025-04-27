@@ -1,0 +1,13 @@
+<form  (ngSubmit)="onSubmit()" [formGroup]="form"
+    (focusin)="onFormFocus.emit($event)" (focusout)="onFormBlur.emit($event)">
+    @for (field of fields; track field) {
+    <div class="mb-2">
+        <emp-field [field]="field" [form]="form"></emp-field>
+    </div>
+    <ng-container *ngTemplateOutlet="fieldTemplate, context: {$implicit: form, form:form, field: field}">
+    </ng-container>
+    }
+    <ng-container *ngTemplateOutlet="button, context :  {$implicit: form}">
+    </ng-container>
+
+</form>

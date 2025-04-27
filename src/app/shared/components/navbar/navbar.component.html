@@ -1,0 +1,23 @@
+<nav class="bg-gray-800 shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-white">Employee Manager</h1>
+    <div class="hidden md:flex space-x-4">
+        <a [routerLink]="['/']" class="text-white hover:underline">Home</a>
+        <a [routerLink]="['/add']" class="text-white hover:underline">Add Employee</a>
+    </div>
+    <!-- Mobile Menu Toggle Button -->
+    <div class="md:hidden">
+        <button (click)="toggleMenu()" class="text-white focus:outline-none">
+            ☰
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu (Slide-in) -->
+@if(menuOpen){
+<div class="md:hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 z-50">
+    <div class="bg-white p-4 flex flex-col items-center">
+        <a routerLink="/" class="text-blue-500 py-2 hover:underline">Home</a>
+        <a routerLink="/add" class="text-blue-500 py-2 hover:underline">Add Employee</a>
+    </div>
+</div>
+}

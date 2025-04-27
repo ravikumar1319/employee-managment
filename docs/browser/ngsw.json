@@ -1,0 +1,48 @@
+{
+  "configVersion": 1,
+  "timestamp": 1745774228225,
+  "index": "/ng-deploy/index.html",
+  "assetGroups": [
+    {
+      "name": "core",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/ng-deploy/index.html",
+        "/ng-deploy/main-DLAE22RQ.js",
+        "/ng-deploy/polyfills-FFHMD2TL.js",
+        "/ng-deploy/styles-35ZYTKYR.css"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/ng-deploy/index.html": "78032c022773191dc8f80542a14ac9965fdcbd65",
+    "/ng-deploy/main-DLAE22RQ.js": "07abc11dca63de8093d0769bf35b58eb693d1794",
+    "/ng-deploy/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/ng-deploy/styles-35ZYTKYR.css": "518e40e08b9e78c159dd52c21f30e5c78d1e63ac"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

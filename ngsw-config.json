@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hashTable": {
+    "files": {
+      "/index.html": {
+        "hash": "examplehash"
+      }
+    }
+  },
+  "assetGroups": [
+    {
+      "name": "core",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/index.html", "/*.css", "/*.js"]
+      }
+    }
+  ]
+}

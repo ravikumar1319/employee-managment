@@ -1,0 +1,91 @@
+<div [formGroup]="form">
+    <div>
+        @switch (field?.controlType) {
+        @case ('inputText') {
+        <emp-input-text [field]="field" [mandatory]="validator(field?.key)"></emp-input-text>
+        }
+        <!-- @case ('inputPhone') {
+        <emp-input-phone [field]="field" [mandatory]="validator(field?.key)"></emp-input-phone>
+        }
+        @case ('inputOTP') {
+        <emp-input-otp [field]="field" [mandatory]="validator(field?.key)"></emp-input-otp>
+        }
+        @case ('inputOTP') {
+        <emp-input-otp [field]="field" [mandatory]="validator(field?.key)" [form]="form"></emp-input-otp>
+        }
+        @case ('password') {
+        <emp-input-password [field]="field" [mandatory]="validator(field?.key)"></emp-input-password>
+        }
+        @case ('dropdown') {
+        <emp-dropdown [field]="field" [mandatory]="validator(field?.key)"></emp-dropdown>
+        }
+        @case ('calender') {
+        <emp-input-calendar [field]="field" [mandatory]="validator(field?.key)"></emp-input-calendar>
+        }
+        @case ('inputNumber') {
+        <emp-input-number [field]="field" [mandatory]="validator(field?.key)"></emp-input-number> -->
+        <!-- <div id="inputNumber">
+        <p-inputNumber inputId="integeronly" [formControlName]="field?.key" [prefix]="field?.prefix"
+          [placeholder]="field?.placeholder" [suffix]="field?.suffix" styleClass="w-full" [classList]="'w-full'">
+        </p-inputNumber>
+      </div> 
+        }-->
+        <!-- @case ('autoComplete') {
+        <p-autoComplete [formControlName]="field?.key" [suggestions]="suggestions" (completeMethod)="field?.autoComplete"></p-autoComplete>
+      } -->
+        <!-- @case ('checkbox') {
+        <emp-input-checkbox [field]="field" [mandatory]="validator(field?.key)"></emp-input-checkbox>
+        }
+        @case ('radio') {
+        <emp-input-radio [field]="field" [mandatory]="validator(field?.key)"></emp-input-radio>
+        }
+
+        @case ('multiselect') {
+        <p-multiSelect [inputId]="field?.key" [options]="field?.options" styleClass="w-full" [classList]="'w-full'"
+            [formControlName]="field?.key" selectedItemsLabel="{0} items selected"
+            defaultLabel="Select a {{field?.label}}" [optionLabel]="field?.optionLabel || 'label'"
+            [optionValue]="field?.optionValue || 'value'" appendTo="body"
+            (onChange)="field?.onChange ? field?.onChange($event) : {}">
+        </p-multiSelect>
+        }
+        @case ('textarea') {
+        <emp-input-textarea [field]="field" [mandatory]="validator(field?.key)"></emp-input-textarea>
+        }
+        @case ('slider') {
+        <emp-input-slider [field]="field" [mandatory]="validator(field?.key)" [form]="form"></emp-input-slider>
+        }
+        @case ('selectButton') {
+        <emp-select-button [field]="field" [mandatory]="validator(field?.key)"></emp-select-button>
+        }
+        @case ('progressBar') {
+        <emp-progress-bar [field]="field" [mandatory]="validator(field?.key)"></emp-progress-bar>
+        }
+        @case ('icon') {
+        <div>
+            <i [class]="field?.icon"></i>
+        </div>
+        }
+        @case ('inputSwitch') {
+        <emp-input-switch [field]="field" [mandatory]="validator(field?.key)"></emp-input-switch>
+        }
+        @case ('inputButtons') {
+        <emp-input-buttons [formControlName]="field?.key" [field]="field"
+            [mandatory]="validator(field?.key)"></emp-input-buttons>
+        }
+        @case ('inputPartialMask') {
+        <emp-mask-input [field]="field" [mandatory]="validator(field?.key)" [form]="form"></emp-mask-input>
+        } -->
+        }
+    </div>
+    @if (hasError('required')) {
+    @if(field?.controlType == 'dropdown'){
+    @if(field?.requiredErrorMessage){
+    <small class="animate-fade-in-up text-red-500">{{field?.requiredErrorMessage}}</small>
+    }@else {
+    <small class="animate-fade-in-up text-red-500">Select a {{field?.label}}</small>
+    }
+    }@else {
+    <small class="animate-fade-in-up text-red-500">Enter a valid {{field?.label}}</small>
+    }
+    }
+</div>
