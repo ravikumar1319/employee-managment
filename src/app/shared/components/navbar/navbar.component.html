@@ -25,10 +25,13 @@
 </nav>
 
 <!-- Mobile Menu (Slide-in) -->
-<div *ngIf="menuOpen" class="md:hidden fixed inset-0 bg-gray-800 bg-opacity-50 z-50" (click)="closeMenu()">
-    <div class="bg-gradient-to-br from-purple-900 via-purple-700 to-pink-500 p-4 flex flex-col items-center w-3/4 sm:w-1/2 absolute right-0 top-[50px] h-auto"
+@if(menuOpen){
+<div class="md:hidden fixed inset-0 bg-gray-800 bg-opacity-50 z-50" (click)="closeMenu()">
+    <div class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 p-4 flex flex-col items-center w-3/4 sm:w-1/2 absolute right-0 top-[50px] h-auto"
         (click)="$event.stopPropagation()">
         <a [routerLink]="['/']" class="text-white py-2 hover:underline" (click)="closeMenu()">Home</a>
         <a [routerLink]="['/add']" class="text-white py-2 hover:underline" (click)="closeMenu()">Add Employee</a>
+        <a [routerLink]="['/auth/login']" class="text-white py-2 hover:underline" (click)="closeMenu()">Log out</a>
     </div>
 </div>
+}
