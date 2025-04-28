@@ -1,7 +1,7 @@
 {
   "name": "empoylee-management-new",
   "short_name": "empoylee-management-new",
-  "theme_color": "#1976d2",
+  "theme_color": "#1F2937",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
