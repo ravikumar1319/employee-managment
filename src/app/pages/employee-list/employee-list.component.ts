@@ -19,7 +19,6 @@ export class EmployeeListComponent implements OnInit {
   constructor(
     private store: Store<{ employee: Employee[] }>
   ) {
-    store.dispatch(employeeActions.loadEmployee())
   }
   
   ngOnInit() {

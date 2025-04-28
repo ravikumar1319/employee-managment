@@ -1,5 +1,5 @@
-<div class="p-4 max-w-xl mx-auto bg-white rounded-lg shadow-md">
-  <h2 class="text-2xl font-bold mb-6">Add New Employee</h2>
+<div class="p-4 max-w-xl mx-auto rounded-lg shadow-md bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
+  <h2 class="text-2xl font-bold mb-6 text-white">Add New Employee</h2>
   
   <form class="space-y-4">
     <emp-form #support [fields]="fields$ | async">
@@ -14,6 +14,10 @@
       <label class="block mb-2">Department</label>
       <input type="text" class="w-full p-2 border rounded" placeholder="Employee Department">
     </div> -->
-    <button type="submit" class="w-full bg-gray-800 text-white p-2 rounded">Save Employee</button>
+    <button type="submit" class="w-full 
+    bg-gradient-to-r from-black via-black to-white 
+    text-white font-bold py-2 px-4 rounded-full 
+    transition-transform duration-300 ease-in-out 
+    hover:-translate-y-1">Save Employee</button>
   </form>
 </div>

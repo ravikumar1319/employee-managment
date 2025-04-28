@@ -1,15 +1,15 @@
 <div>
     @if(field.label){
-    <div  class="text-grey-700 text-14 font-gilroy mb-2" [attr.for]="field.key">{{
+    <label  class="block text-gray-300  font-gilroy mb-2" [attr.for]="field.key">{{
         field.label
         }}
         @if (mandatory) {
-        <span class="p-error">*</span>
+        <span class="text-red-500">*</span>
         }
-    </div>
+    </label>
     }
 
-    <input class="w-full p-2 border rounded" type="text" [formControlName]="field.key"
+    <input class="w-full px-4 py-2 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white text-white transition placeholder-gray-400" type="text" [formControlName]="field.key"
         [placeholder]="field.placeholder" [id]="field.key" (change)="field.onChange ? field.onChange($event) : {}" />
     <!-- @if (field?.info) {
     <div class="text-12 text-grey-dark font-gilroy mt-4">

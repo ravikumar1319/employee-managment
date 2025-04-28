@@ -1,10 +1,10 @@
 <div class="p-4">
   <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
-    <h2 class="text-2xl font-bold mb-4 md:mb-0">Employee List</h2>
+    <h2 class="text-2xl font-bold text-grey-dark mb-4 md:mb-0">Employee List</h2>
   </div>
 
   <table class="min-w-full bg-white rounded-lg shadow-md">
-    <thead class="bg-gray-800">
+    <thead class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
       <tr>
         <th class="py-3 px-6 text-left text-gray-200">Name</th>
         <th class="py-3 px-6 text-left text-gray-200">Department</th>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       @for (emp of employee$ | async; track emp.id) {
-      <tr class="border-t">
+      <tr class="border-t bg-gray-800 text-white">
         <td class="py-2 px-4">{{emp.name}}</td>
         <td class="py-2 px-4">{{emp.department}}</td>
         <td class="py-2 px-4">
@@ -21,7 +21,7 @@
           <button class="text-red-500 hover:underline">Delete</button>
         </td>
       </tr>
-    }
+      }
     </tbody>
   </table>
 </div>
