@@ -11,4 +11,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class InputButtonComponent {
   @Input() btnValue: string = ''
+  @Input() disabled: boolean = false
+  
 }

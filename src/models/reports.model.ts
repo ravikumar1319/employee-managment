@@ -1,4 +1,8 @@
+import { ReportStatus } from "../app/app.ENUM";
+
 export interface Reports {
+    id:number,
     type: string,
-    url: URL
+    status:ReportStatus,
+    url: URL | null
 }

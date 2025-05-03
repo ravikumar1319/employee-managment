@@ -9,7 +9,7 @@ export class FieldBase<T> {
     controlType: string;
     placeholder: string;
     constructor(options?: {
-        value: T | undefined,
+        value: T,
         key: string;
         label: string,
         validators?: ValidatorFn[] | undefined;

@@ -8,8 +8,7 @@
         }
     </label>
     }
-
-    <input class="w-full px-4 py-2 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white text-white transition placeholder-gray-400" type="text" [formControlName]="field.key"
+    <input class="w-full px-4 py-2 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white text-white transition placeholder-gray-400" type="text" [formControlName]="field.key" autocomplete="off"
         [placeholder]="field.placeholder" [id]="field.key" (change)="field.onChange ? field.onChange($event) : {}" />
     <!-- @if (field?.info) {
     <div class="text-12 text-grey-dark font-gilroy mt-4">

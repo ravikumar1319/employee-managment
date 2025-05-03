@@ -10,6 +10,7 @@ import { InputButtonComponent } from '../../shared/components/input-controls/inp
 import { EmployeeService } from '../../services/employee.service';
 import { Reports } from '../../../models/reports.model';
 import { SocketService } from '../../services/socket.service';
+import { ReportStatus } from '../../app.ENUM';
 
 @Component({
   selector: 'emp-reports',
@@ -20,14 +21,17 @@ import { SocketService } from '../../services/socket.service';
 })
 export class ReportsComponent implements OnInit {
   fields$: Observable<FieldBase<any>[]> | undefined;
-
+  reports: Reports[] = []
   constructor(
     private _employeeServices: EmployeeService,
     private _socketService: SocketService
   ) {
-    this._socketService.listen('reportReady').subscribe((res:any) => {
+    this._socketService.listen('reportReady').subscribe((res: any) => {
       console.log('Report generated...');
       console.log(res.url)
+      this.reports = this.reports.map(ele => { return ele.id == res.id ? { ...ele, url: res.url, status: ReportStatus.COMPLETED } : ele })
+      console.log(this.reports)
+      // this.reports[0] = { id: 1, type: 'new', status: ReportStatus.COMPLETED, url: res.url };
     })
   }
 
@@ -46,10 +50,15 @@ export class ReportsComponent implements OnInit {
     ]);
   }
 
-  getReport() {
-    const data: Partial<Reports> = { type: 'new' }
-    this._employeeServices.getReports(data).subscribe(()=>{
+  getReport(form: any) {
+    const data: Partial<Reports> = form
+    this._employeeServices.getReports(data).subscribe((res) => {
+      this.reports.push(
+        { id: res.id, type: data.type || '', status: ReportStatus.IN_PROGRESS, url: null }
+      );
       console.log('Report generation started...');
+      console.log(this.reports)
+
     })
   }
 }
