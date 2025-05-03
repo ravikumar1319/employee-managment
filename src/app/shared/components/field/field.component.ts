@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextComponent } from '../input-controls/input-text/input-text.component';
+import { InputPasswordComponent } from '../input-controls/input-password/input-password.component';
 
 @Component({
   selector: 'emp-field',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputTextComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputTextComponent, InputPasswordComponent],
   templateUrl: './field.component.html',
   styleUrl: './field.component.css'
 })

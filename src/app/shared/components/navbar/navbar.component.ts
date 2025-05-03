@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,13 +8,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
-  menuOpen = false;
+export class NavbarComponent implements OnInit {
+  ngOnInit(): void {
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
-  closeMenu() {
-    this.menuOpen = false;
   }
 }

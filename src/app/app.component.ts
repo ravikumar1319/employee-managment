@@ -14,11 +14,11 @@ import { employeeActions } from './store/actions/employee.actions';
 export class AppComponent implements OnInit{
   title = 'empoylee-management-new';
   constructor(
-    private store: Store<{ employee: Employee[] }>
+   
   ) {
   }
   
   ngOnInit(): void {
-    this.store.dispatch(employeeActions.loadEmployee())
+    
   }
 }

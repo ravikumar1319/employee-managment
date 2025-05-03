@@ -3,6 +3,7 @@ import { Employee } from '../../models/employee.model';
 import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT } from '../app.constant';
 import { Observable } from 'rxjs';
+import { Reports } from '../../models/reports.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,13 @@ export class EmployeeService {
     { id: 2, name: 'Jane Smith', department: 'IT' }
   ];
 
-  // getEmployees(): Observable<Employee[]> {
-  //   return this.http.get<Employee[]>(API_ENDPOINT+'/employee');
-  // }
-
-  getEmployees() {
-    return this.http.get("http://localhost:3000/employee")
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(API_ENDPOINT + '/api/employee');
   }
+
+  // getEmployees() {
+  //   return this.http.get("http://localhost:3000/employee")
+  // }
 
   addEmployee(employee: Employee) {
     this.employees.push(employee);
@@ -41,5 +42,9 @@ export class EmployeeService {
 
   getEmployeeById(id: number): Employee | undefined {
     return this.employees.find(emp => emp.id === id);
+  }
+
+  getReports(reports: Partial<Reports>):Observable<Reports> {
+    return this.http.get<Reports>(API_ENDPOINT + `/api/reports?type=${reports.type}`)
   }
 }

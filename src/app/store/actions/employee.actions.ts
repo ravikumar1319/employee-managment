@@ -1,7 +1,7 @@
 import { createAction, createActionGroup, emptyProps, props } from "@ngrx/store";
 import { Employee } from "../../../models/employee.model";
 
-export const loadEmployee = createAction('[Employee] Load Employee')
+export const clearEmployee = createAction('[Employee] Clear Employee')
 
 export const employeeActions = createActionGroup({
     source: '[Employee]',
@@ -9,6 +9,7 @@ export const employeeActions = createActionGroup({
         'Load Employee': emptyProps(),
         'Load Employee Success': props<{ employee: Employee[] }>(),
         'Load Employee Failure': emptyProps(),
+        'Clear Employee': emptyProps(),
     }
 })
 

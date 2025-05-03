@@ -1,0 +1,35 @@
+<div class="p-4">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+        <h2 class="text-2xl font-bold text-grey-dark mb-4 md:mb-0">Report List</h2>
+    </div>
+    <div class="p-4 max-w-xl mx-auto rounded-lg shadow-md bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
+        <form class="space-y-4">
+            <emp-form #support [fields]="fields$ | async">
+                <ng-template #fieldTemplate let-form="form" let-field="field">
+                </ng-template>
+            </emp-form>
+            <emp-input-button [btnValue]="'Get Report'" (click)="getReport()"></emp-input-button>
+        </form>
+    </div>
+    <table class="min-w-full bg-white rounded-lg shadow-md mt-5">
+        <thead class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
+            <tr>
+                <th class="py-3 px-6 text-left text-gray-200">Name</th>
+                <th class="py-3 px-6 text-left text-gray-200">Department</th>
+                <th class="py-3 px-6 text-left text-gray-200">Actions</th>
+            </tr>
+        </thead>
+        <!-- <tbody>
+        @for (emp of employee$ | async; track emp.id) {
+        <tr class="border-t bg-gray-800 text-white">
+          <td class="py-2 px-4">{{emp.name}}</td>
+          <td class="py-2 px-4">{{emp.department}}</td>
+          <td class="py-2 px-4">
+            <a routerLink="/edit/1" class="text-blue-500 hover:underline mr-2">Edit</a>
+            <button class="text-red-500 hover:underline">Delete</button>
+          </td>
+        </tr>
+        }
+      </tbody> -->
+    </table>
+</div>

@@ -6,11 +6,12 @@ import { FieldBase } from '../../shared/models/field-base';
 import { InputTextField } from '../../shared/models/input-field';
 import { CustomValidator } from '../../shared/utils/validators/custom.validtors';
 import { FormComponent } from '../../shared/components/form/form.component';
+import { InputButtonComponent } from '../../shared/components/input-controls/input-button/input-button.component';
 import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'emp-employee-add',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, FormsModule, FormComponent, AsyncPipe],
+  imports: [RouterModule, ReactiveFormsModule, FormsModule, FormComponent,InputButtonComponent,AsyncPipe],
   templateUrl: './employee-add.component.html',
   styleUrl: './employee-add.component.css'
 })

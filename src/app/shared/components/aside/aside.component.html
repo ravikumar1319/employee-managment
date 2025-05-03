@@ -1,0 +1,29 @@
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 w-64 p-4 text-white fixed md:relative z-50"
+        [class.hidden]="!menuOpen && isMobile">
+        <h1 class="text-2xl font-bold mb-6 cursor-pointer" [routerLink]="['/']">Employee Manager</h1>
+
+        <aside class="flex flex-col space-y-2">
+            @for(menu of menuItems; track menu) {
+            <a [routerLink]="[menu.route]" class="hover:underline hover:bg-gray-700 p-2 rounded transition"
+                (click)="closeMenu()">{{ menu.label }}</a>
+            }
+        </aside>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 p-4">
+        <!-- Mobile Menu Toggle -->
+        <div class="md:hidden mb-4">
+            <button (click)="toggleMenu()" class="text-gray-800 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Your router outlet or page content here -->
+        <router-outlet></router-outlet>
+    </div>
+</div>

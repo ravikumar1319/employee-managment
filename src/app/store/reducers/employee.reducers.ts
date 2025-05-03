@@ -6,5 +6,6 @@ const initialState: Employee[] = []
 
 export const employeeReducer = createReducer(
     initialState,
-    on(employeeActions.loadEmployeeSuccess, (state, action) => { return [...state, ...action.employee] })
+    on(employeeActions.loadEmployeeSuccess, (state, action) => { return [...state, ...action.employee] }),
+    on(employeeActions.clearEmployee, (state, action) => { return [] })
 ) 
