@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { employeeActions } from '../../store/actions/employee.actions';
-import { Observable } from 'rxjs';
-import {  selectEmployeeState } from '../../store/selectors/employee.selectors';
+import { Observable, take } from 'rxjs';
+import { selectEmployeeState, selectAllEmployees } from '../../store/selectors/employee.selectors';
 
 @Component({
   selector: 'emp-employee-list',
   standalone: true,
-  imports: [RouterModule, CommonModule,AsyncPipe],
+  imports: [RouterModule, CommonModule, AsyncPipe],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css'
 })
@@ -19,17 +19,23 @@ export class EmployeeListComponent implements OnInit {
   constructor(
     private store: Store<{ employee: Employee[] }>
   ) {
+    this.employee$ = this.store.select(selectAllEmployees);
   }
-  
+
   ngOnInit() {
-    this.employee$ = this.store.select(selectEmployeeState)
-    // this._employeeService.getEmployees().subscribe(res => {
-      // this.employees = res
-    // });
+    this.store.select(selectEmployeeState).pipe(take(1)).subscribe(res => {
+      if (!res.loaded) {
+        this.store.dispatch(employeeActions.loadEmployee());
+      }
+    });
   }
 
   deleteEmployee(id: number) {
     // this._employeeService.deleteEmployee(id);
     // this.employees = this._employeeService.getEmployees();
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(employeeActions.clearEmployee())
   }
 }

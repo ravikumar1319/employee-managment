@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { FieldBase } from '../../shared/models/field-base';
-import { InputTextField, PasswordField } from '../../shared/models/input-field';
-import { CustomValidator } from '../../shared/utils/validators/custom.validtors';
-import { FormComponent } from '../../shared/components/form/form.component';
+import { FieldBase } from '../../../shared/models/field-base';
+import { InputTextField, PasswordField } from '../../../shared/models/input-field';
+import { CustomValidator } from '../../../shared/utils/validators/custom.validtors';
+import { FormComponent } from '../../../shared/components/form/form.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { InputButtonComponent } from '../../shared/components/input-controls/input-button/input-button.component';
+import { AuthService } from '../../../services/auth.service';
+import { InputButtonComponent } from '../../../shared/components/input-controls/input-button/input-button.component';
+import { Login } from '../../../../models/login.models';
+import { Store } from '@ngrx/store';
+import { loginActions } from '../../../store/actions/login.action';
 
 @Component({
   selector: 'emp-login',
@@ -22,7 +25,8 @@ export class LoginComponent implements OnInit {
   fields$: Observable<FieldBase<any>[]> | undefined;
   constructor(
     private router: Router,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private store: Store<{ login: Login }>
   ) { }
 
   ngOnInit(): void {
@@ -46,10 +50,13 @@ export class LoginComponent implements OnInit {
     ]);
   }
 
-  submitForm(event:any) {
-    console.log('Login clicked');
-    this._authService.login(this.data).subscribe(() => {
-      this.router.navigate(['/'])
-    })
+  submitForm(form: Login) {
+    this.store.dispatch(loginActions.initLogin({ user: { ...form } }))
+    // this._authService.login(form).subscribe((res: any) => {
+    //   localStorage.setItem('token', res.token)
+    //   this.router.navigate(['/'])
+    // })
   }
+
+
 }

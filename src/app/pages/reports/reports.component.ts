@@ -42,10 +42,11 @@ export class ReportsComponent implements OnInit {
   getFields(): Observable<FieldBase<any>[]> {
     return of([
       new InputTextField({
+        value:'Employee',
         key: 'type',
-        label: 'Reports',
+        label: 'Report Name',
         validators: [Validators.required, CustomValidator.noSpaceValidator],
-        placeholder: 'Jane007',
+        placeholder: 'Employee',
       }),
     ]);
   }

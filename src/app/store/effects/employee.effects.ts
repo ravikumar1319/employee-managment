@@ -10,7 +10,6 @@ export class MoviesEffects {
     _employeeService = inject(EmployeeService);
 
     constructor() {
-        console.log('Actions service:', this.actions$);
     }
     loadEmployees$ = createEffect(() => {
         return this.actions$.pipe(
@@ -18,7 +17,7 @@ export class MoviesEffects {
             switchMap(() => this._employeeService.getEmployees()
                 .pipe(
                     map((employee: any) => employeeActions.loadEmployeeSuccess({ employee })),
-                    catchError(() => of(employeeActions.loadEmployeeFailure()))
+                    catchError((error) => of(employeeActions.loadEmployeeFailure({ error: error.error && error.error.message || 'Unknown error' })))
                 )
             )
         );

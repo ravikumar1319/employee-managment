@@ -11,7 +11,7 @@
       <h2 class="text-3xl font-bold text-white text-center mb-6">Welcome back</h2>
       <form>
         <div class="mb-6">
-          <emp-form #support [fields]="fields$ | async">
+          <emp-form #login [fields]="fields$ | async">
             <ng-template #fieldTemplate let-form="form" let-field="field">
             </ng-template>
           </emp-form>
@@ -24,7 +24,7 @@
           </a>
         </div>
 
-        <emp-input-button [btnValue]="'Login'" (click)="submitForm($event)"></emp-input-button>
+        <emp-input-button [btnValue]="'Login'" (click)="submitForm(login.form.getRawValue())" [disabled]="login.form.invalid"></emp-input-button>
       </form>
 
       <div class="mt-6 text-center text-sm text-gray-400">

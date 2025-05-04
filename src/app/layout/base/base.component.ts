@@ -1,8 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
-import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
-import { Store } from '@ngrx/store';
-import { Employee } from '../../../models/employee.model';
-import { employeeActions } from '../../store/actions/employee.actions';
+import { Component } from '@angular/core';
 import { AsideComponent } from '../../shared/components/aside/aside.component';
 
 @Component({
@@ -12,15 +8,8 @@ import { AsideComponent } from '../../shared/components/aside/aside.component';
   templateUrl: './base.component.html',
   styleUrl: './base.component.css'
 })
-export class BaseComponent implements OnDestroy {
+export class BaseComponent {
 
-  constructor(
-    private store: Store<{ employee: Employee[] }>
-  ) {
-    store.dispatch(employeeActions.loadEmployee())
-  }
+  constructor() { }
 
-  ngOnDestroy(): void {
-    this.store.dispatch(employeeActions.clearEmployee())
-  }
 }

@@ -1,29 +1,72 @@
-<div class="flex h-screen">
+<div class="flex h-screen overflow-hidden">
     <!-- Sidebar -->
-    <div class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 w-64 p-4 text-white fixed md:relative z-50"
-        [class.hidden]="!menuOpen && isMobile">
-        <h1 class="text-2xl font-bold mb-6 cursor-pointer" [routerLink]="['/']">Employee Manager</h1>
+    <div class="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 text-white w-64 p-4 z-50 fixed inset-y-0 left-0 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0"
+        [class.-translate-x-full]="!menuOpen && isMobile">
+        <!-- Mobile-only Back Button -->
+        <div class="md:hidden mb-4 flex items-center justify-between">
+            <h1 class="text-xl font-semibold cursor-pointer" [routerLink]="['/']">Employee</h1>
+            <button (click)="closeMenu()" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
 
+        <!-- Desktop Title -->
+        <h1 class="text-2xl font-bold mb-6 cursor-pointer hidden md:block" [routerLink]="['/']">Employee</h1>
+
+        <!-- Menu List -->
         <aside class="flex flex-col space-y-2">
-            @for(menu of menuItems; track menu) {
-            <a [routerLink]="[menu.route]" class="hover:underline hover:bg-gray-700 p-2 rounded transition"
-                (click)="closeMenu()">{{ menu.label }}</a>
+            @for(menu of menuItems; track menu){
+            <ng-container>
+                <a [routerLink]="[menu.route]" class="hover:underline hover:bg-gray-700 p-2 rounded transition"
+                    (click)="closeMenu(); menu.action && menu.action()">
+                    {{ menu.label }}
+                </a>
+            </ng-container>
             }
         </aside>
     </div>
 
-    <!-- Main content -->
-    <div class="flex-1 p-4">
-        <!-- Mobile Menu Toggle -->
-        <div class="md:hidden mb-4">
-            <button (click)="toggleMenu()" class="text-gray-800 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
+    <!-- Overlay for Mobile -->
+    @if(menuOpen && isMobile){
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" (click)="closeMenu()">
+    </div>
+    }
+
+    <!-- Main Content -->
+    <div class="flex-1 p-4 flex flex-col transition-all duration-300">
+        <!-- Header (Shared for Mobile + Desktop) -->
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center pb-0">
+            <!-- Mobile Menu Toggle -->
+            <div class="md:hidden flex justify-between items-center mb-4">
+                <button (click)="toggleMenu()" class="text-gray-800 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <ng-container *ngTemplateOutlet="header"></ng-container>
+            </div>
+
+            <!-- Desktop Title + Avatar -->
+            <div class="hidden md:flex justify-between items-center w-full">
+                <ng-container *ngTemplateOutlet="header"></ng-container>
+            </div>
         </div>
-        <!-- Your router outlet or page content here -->
-        <router-outlet></router-outlet>
+
+        <!-- Page Content -->
+        <div class="p-4">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
+
+<ng-template #header>
+    <h2 class="text-2xl font-bold text-gray-800">{{ title }}</h2>
+    <div class="avatar w-10 h-10 flex items-center justify-center rounded-full text-white font-bold"
+        [ngStyle]="{ 'background-color': bgColor }">
+        {{ userName }}
+    </div>
+</ng-template>

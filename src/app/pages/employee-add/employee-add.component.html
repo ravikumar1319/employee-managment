@@ -2,10 +2,10 @@
   <h2 class="text-2xl font-bold mb-6 text-white">Add New Employee</h2>
   
   <form class="space-y-4">
-    <emp-form #support [fields]="fields$ | async">
+    <emp-form #add [fields]="fields$ | async">
       <ng-template #fieldTemplate let-form="form" let-field="field">
       </ng-template>
     </emp-form>
-    <emp-input-button [btnValue]="'Save Employee'"></emp-input-button>
+    <emp-input-button [btnValue]="'Save Employee'" [disabled]="add.form.invalid"></emp-input-button>
   </form>
 </div>

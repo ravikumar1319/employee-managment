@@ -9,6 +9,8 @@ import { provideEffects } from '@ngrx/effects'
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { employeeReducer } from './store/reducers/employee.reducers';
 import { MoviesEffects } from './store/effects/employee.effects';
+import { LoginEffects } from './store/effects/login.effects';
+import { loginReducer } from './store/reducers/login.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,10 +22,12 @@ export const appConfig: ApplicationConfig = {
       registrationStrategy: 'registerWhenStable:30000',
     }),
     provideStore({
-      employee: employeeReducer
+      employee: employeeReducer,
+      login: loginReducer
     }),
     provideEffects(
-      MoviesEffects
+      MoviesEffects,
+      LoginEffects
     ),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states

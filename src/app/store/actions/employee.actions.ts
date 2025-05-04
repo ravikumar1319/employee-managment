@@ -8,18 +8,7 @@ export const employeeActions = createActionGroup({
     events: {
         'Load Employee': emptyProps(),
         'Load Employee Success': props<{ employee: Employee[] }>(),
-        'Load Employee Failure': emptyProps(),
+        'Load Employee Failure': props<{ error: string }>(),
         'Clear Employee': emptyProps(),
     }
 })
-
-// export const loadGroceries = createAction('[Grocery] Load Groceries')
-
-// export const groceriesGroupAction = createActionGroup({
-//     source: '[Grocery]',
-//     events: {
-//         'Load Groceries': emptyProps(),
-//         'Load Groceries Success': props<{ groceries: Grocery[] }>(),
-//         'Load Groceries Failure': emptyProps(),
-//     }
-// })
