@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT } from '../app.constant';
 import { Observable } from 'rxjs';
 import { Reports } from '../../models/reports.model';
+import { Login } from '../../models/login.models';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class EmployeeService {
     return this.employees.find(emp => emp.id === id);
   }
 
-  getReports(reports: Partial<Reports>):Observable<Reports> {
-    return this.http.get<Reports>(API_ENDPOINT + `/api/reports?type=${reports.type}`)
+  getReports(reports: Partial<Reports>, userId: any): Observable<Reports> {
+    return this.http.get<Reports>(API_ENDPOINT + `/api/reports?type=${reports.type}&userId=${userId}`)
   }
 }

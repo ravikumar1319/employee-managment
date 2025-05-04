@@ -11,7 +11,7 @@ export const loginReducer = createReducer(
             const b = Math.floor(Math.random() * 100);
             return `rgb(${r}, ${g}, ${b})`;
         }
-        localStorage.setItem('userDetails', JSON.stringify({ token: action.token, userName: action.user?.userName, profile: getRandomDarkColor() }))
+        localStorage.setItem('userDetails', JSON.stringify({ token: action.token, userName: action.user?.userName, profile: getRandomDarkColor(), id: action.user.id }))
         return {
             ...state,
             token: action.token,

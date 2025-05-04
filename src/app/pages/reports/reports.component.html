@@ -5,7 +5,8 @@
                 <ng-template #fieldTemplate let-form="form" let-field="field">
                 </ng-template>
             </emp-form>
-            <emp-input-button [btnValue]="'Get Report'" (click)="getReport(report.form.getRawValue())" [disabled]="report.form.invalid"></emp-input-button>
+            <emp-input-button [btnValue]="'Get Report'" (click)="getReport(report.form.getRawValue())"
+                [disabled]="report.form.invalid"></emp-input-button>
         </form>
     </div>
     <table class="min-w-full bg-white rounded-lg shadow-md mt-5">
@@ -20,11 +21,26 @@
             @for (report of reports; track report.id) {
             <tr class="border-t bg-gray-800 text-white">
                 <td class="py-2 px-4">{{report.type}}</td>
-                <td class="py-2 px-4">{{report.status}}</td>
+                <td class="py-2 px-4">
+                    <div class="flex items-center gap-2">
+                      <span>{{ report.status }}</span>
+                  
+                      @if (report.progress > 0 && report.status === 'IN PROGRESS') {
+                        <div class="relative w-32 h-2 bg-gray-300 rounded">
+                          <div
+                            class="h-2 bg-green-500 rounded transition-all duration-500 ease-in-out"
+                            [style.width.%]="report.progress">
+                          </div>
+                        </div>
+                        <span>{{ report.progress }}%</span>
+                      }
+                    </div>
+                  </td>                  
                 <td class="py-2 px-4">
                     @if(report.url){
-                    <a [href]="report.url" target="_blank" download="file.csv" class="text-blue-500 hover:underline mr-2">Download</a>
-                }
+                    <a [href]="report.url" target="_blank" download="file.csv"
+                        class="text-blue-500 hover:underline mr-2">Download</a>
+                    }
                 </td>
             </tr>
             }

@@ -20,4 +20,11 @@ export class AuthService {
   isUserLoggedIn(): boolean {
     return !!localStorage.getItem('userDetails')
   }
+
+  getUserDetails(): Record<string, string> {
+    const userDetails = localStorage.getItem('userDetails')
+    const data = userDetails ? JSON.parse(userDetails) : {}
+    delete data.token
+    return data
+  }
 }
