@@ -36,6 +36,5 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.store.dispatch(employeeActions.clearEmployee())
   }
 }

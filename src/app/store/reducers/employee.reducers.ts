@@ -20,8 +20,5 @@ export const employeeReducer = createReducer(
             loaded: false,
             error: action.error
         }
-    }),
-    on(employeeActions.clearEmployee, () => {
-        return initialState
     })
 ) 
